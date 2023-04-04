@@ -26,6 +26,8 @@ function App() {
 
   //handle what happens when user clicks the button to submitt a new item
   const addTask = async (description) => {
+
+    
     try {
       // Make a fetch request to the backend api and send the body. The body should have what the user typed in the input
       // The backend will make sure to store it in the database

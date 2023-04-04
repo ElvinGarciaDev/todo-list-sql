@@ -12,7 +12,11 @@ const InputTodo = ({onAdd}) => {
 
     // When the form is submitted
     const handleSubmit = (e) => {
+
         e.preventDefault()
+
+        if (description == '') return // If the input is empty do nothing
+
 
         // Send the value of the input box. So we can send the value using a fetch call to the backend
         // This onAdd function is declared in App.js
