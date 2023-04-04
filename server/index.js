@@ -15,7 +15,7 @@ app.post("/todos", async(req, res) => {
 
         const { description } = req.body
         const newTodo = await pool.query(
-            "INSERT INTO todos (description) VALUES($1) RETURN *", // This will insert the data into the table we created on our database
+            "INSERT INTO todos (description) VALUES($1) RETURNING *", // This will insert the data into the table we created on our database
             [description]
         );
         res.json(newTodo.rows[0])
