@@ -25,4 +25,16 @@ app.post("/todos", async(req, res) => {
     }
 })
 
+//get all todo
+app.get("/todos", async (req, res) => {
+    try {
+
+        const allTodos = await pool.query("SELECT * FROM todos") // Get all the data from the todos table
+        res.json(allTodos.rows)
+        
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 app.listen(8000, () => console.log("Server is runnong on port 8000"))
