@@ -62,10 +62,37 @@ function App() {
     }
   };
 
+  // A modal will pop up when the user clicks on the edit button. This function takes care of updating an item
+  const updateDescription = async (description) => {
+
+    try {
+        
+        const res = await fetch(`http://localhost:8000/todos/${description.todo.id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(description),
+          });
+
+
+          // I took this code from the first react course I did with traversy media. I changed it arround to work for thos project
+          // using the map method on the Tasks array. we use the tenerary oporator ? to see if the current element
+          // id matches the id that came back from the doubleClick. is so, we're chaning the reminder proporty
+          // to the oppisite. So if it's true it goes to false. Same other way around
+          setTodos(
+            todos.map((task) =>
+              task.id == description.todo.id ? { ...task, description: description.description } : task
+            )
+          );
+
+    } catch (error) {
+        console.log(error)
+    }
+  };
+
   return (
     <div className="container">
       <InputTodo onAdd={addTask} />
-      <ListTodos todos={todos} deleteTodos={deleteTodos} />
+      <ListTodos todos={todos} deleteTodos={deleteTodos} updateDescription={updateDescription}/>
     </div>
   );
 }

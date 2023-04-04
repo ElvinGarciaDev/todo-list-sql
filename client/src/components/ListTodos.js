@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import EditTodo from "./EditTodo";
 
-const ListTodos = ({todos, deleteTodos}) => {
+const ListTodos = ({todos, deleteTodos, updateDescription}) => {
 
 
   return (
@@ -18,7 +18,9 @@ const ListTodos = ({todos, deleteTodos}) => {
           {todos.map((todo) => (
             <tr key={todo.id}>
               <td>{todo.description}</td>
-              <td>Edit</td>
+              <td>
+                <EditTodo todo={todo} updateDescription={updateDescription}/>
+              </td>
               <td>
                 {/* When you click this delete btn, it runs the deleteTodos function created above. Make sure to pass the specific id you click on*/}
                 <button className="btn btn-danger" onClick={() => deleteTodos(todo.id)}>Delete</button>
