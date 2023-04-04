@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 const EditTodo = ({ todo, updateDescription }) => {
   const [description, setDescription] = useState(todo.description);
 
-
   const handleClick = (e) => {
     e.preventDefault();
 
@@ -31,14 +30,14 @@ const EditTodo = ({ todo, updateDescription }) => {
           <div className="modal-content">
             <div className="modal-header">
               <h4 className="modal-title">Edit Todo</h4>
-              <button
+              {/* <button
                 type="button"
                 className="close"
                 data-dismiss="modal"
-                onClick={() => setDescription.todo.description}
+                onClick={() => setDescription(todo.description)}
               >
-                &times;
-              </button>
+                <i class="bi bi-x-lg"></i>
+              </button> */}
             </div>
             <div className="modal-body">
               <input
@@ -51,10 +50,8 @@ const EditTodo = ({ todo, updateDescription }) => {
             <div className="modal-footer">
               <button
                 type="button"
-                className="btn btn-warning"
+                className="btn btn-primary"
                 data-dismiss="modal"
-
-
                 // When the user clicks the update button. Call the handleClick function declared up top. This function will then call another function declared in App.js
                 onClick={handleClick}
               >
