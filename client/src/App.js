@@ -92,7 +92,9 @@ function App() {
   return (
     <div className="container">
       <InputTodo onAdd={addTask} />
-      <ListTodos todos={todos} deleteTodos={deleteTodos} updateDescription={updateDescription}/>
+
+      {todos.length != 0 && <ListTodos todos={todos} deleteTodos={deleteTodos} updateDescription={updateDescription}/>
+}
     </div>
   );
 }
